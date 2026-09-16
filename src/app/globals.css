@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fbf7f1;
+  --foreground: #2a1c18;
+  --card: #ffffff;
+  --primary: #6e1e2e;
+  --primary-foreground: #ffffff;
+  --accent: #c6a15b;
+  --accent-foreground: #2a1c18;
+  --muted: #f3e9dd;
+  --muted-foreground: #7a655a;
+  --border: #e7dacb;
+  --footer: #1c120f;
+  --footer-foreground: #efe4d8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-footer: var(--footer);
+  --color-footer-foreground: var(--footer-foreground);
+  --font-serif: var(--font-display);
+  --font-sans: var(--font-body);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@utility eyebrow {
+  display: block;
+  color: var(--color-primary);
+  font-size: 0.6875rem;
+  line-height: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@utility animate-accordion-down {
+  animation: accordion-down 0.2s ease-out;
+}
+
+@utility animate-accordion-up {
+  animation: accordion-up 0.2s ease-out;
+}
+
+@utility xg-mark {
+  position: relative;
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  & span:first-child {
+    transform: translate(-0.16rem, -0.04rem);
+  }
+  & span:last-child {
+    position: absolute;
+    transform: translate(0.18rem, 0.16rem);
+    font-size: 0.9rem;
+  }
+}
