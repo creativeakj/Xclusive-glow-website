@@ -5,6 +5,7 @@ import { ProductDetail } from "@/components/product-detail";
 import { ShopifyNotConfigured } from "@/components/shopify-not-configured";
 import { getProductByHandle } from "@/lib/shopify/products";
 import { isStorefrontConfigured } from "@/lib/shopify/env";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata(
   props: PageProps<"/products/[handle]">
@@ -14,10 +15,11 @@ export async function generateMetadata(
   const product = await getProductByHandle(handle);
   if (!product) return {};
 
-  return {
+  return pageMetadata({
     title: product.seo.title || product.title,
-    description: product.seo.description || product.description,
-  };
+    description: product.seo.description || product.description || undefined,
+    path: `/products/${handle}`,
+  });
 }
 
 export default async function ProductPage(

@@ -5,6 +5,7 @@ import { getCustomerOrders } from "@/lib/shopify/customer";
 
 export const metadata: Metadata = {
   title: "Orders",
+  robots: { index: false, follow: false },
 };
 
 export default async function OrdersPage() {

@@ -3,6 +3,7 @@ import { getCustomerAddresses } from "@/lib/shopify/customer";
 
 export const metadata: Metadata = {
   title: "Addresses",
+  robots: { index: false, follow: false },
 };
 
 export default async function AddressesPage() {

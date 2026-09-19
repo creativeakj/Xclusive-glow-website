@@ -1,10 +1,11 @@
 import Image from "next/image";
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Our Story",
   description: "Discover the story and values behind Xclusive Glow.",
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

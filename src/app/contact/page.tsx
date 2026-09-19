@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Contact",
   description: "Contact the Xclusive Glow client care team.",
-};
+  path: "/contact",
+});
 
 // Mailto form: no backend/email service is configured yet (see README's
 // outstanding client decisions), so this opens the visitor's mail client

@@ -6,6 +6,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 import { WishlistProvider } from "@/components/wishlist-provider";
+import { shopifyConfig } from "@/lib/shopify/env";
+import { defaultDescription, siteName } from "@/lib/seo";
 
 const displayFont = Instrument_Serif({
   variable: "--font-display",
@@ -20,13 +22,35 @@ const bodyFont = Work_Sans({
   weight: ["300", "400", "500", "600"],
 });
 
+const description = defaultDescription;
+
 export const metadata: Metadata = {
+  metadataBase: new URL(shopifyConfig.siteUrl),
   title: {
-    default: "Xclusive Glow | Luxury Beauty & Fashion",
-    template: "%s | Xclusive Glow",
+    default: `${siteName} | Luxury Beauty & Fashion`,
+    template: `%s | ${siteName}`,
   },
-  description:
-    "Shop curated luxury beauty, women's, men's and kids' fashion at Xclusive Glow.",
+  description,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    siteName,
+    title: `${siteName} | Luxury Beauty & Fashion`,
+    description,
+    url: "/",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteName} | Luxury Beauty & Fashion`,
+    description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

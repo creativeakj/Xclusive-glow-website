@@ -1,9 +1,11 @@
-import type { Metadata } from "next";
 import { ProductListingPage } from "@/components/product-listing-page";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Shop",
-};
+  description: "Beauty, fashion and occasion pieces curated for your every glow.",
+  path: "/shop",
+});
 
 export default async function ShopPage(props: PageProps<"/shop">) {
   const searchParams = await props.searchParams;

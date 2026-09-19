@@ -1,11 +1,12 @@
 import Image from "next/image";
-import type { Metadata } from "next";
 import Link from "next/link";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Offers",
   description: "Seasonal offers from Xclusive Glow.",
-};
+  path: "/offers",
+});
 
 export default function OffersPage() {
   return (

@@ -4,6 +4,7 @@ import { getCustomerOrders, getCustomerProfile } from "@/lib/shopify/customer";
 
 export const metadata: Metadata = {
   title: "Account",
+  robots: { index: false, follow: false },
 };
 
 export default async function AccountOverviewPage() {

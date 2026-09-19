@@ -4,6 +4,7 @@ import { ProductGrid } from "@/components/product-grid";
 import { ShopifyNotConfigured } from "@/components/shopify-not-configured";
 import { getCollectionByHandle } from "@/lib/shopify/products";
 import { isStorefrontConfigured } from "@/lib/shopify/env";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata(
   props: PageProps<"/collections/[handle]">
@@ -13,10 +14,11 @@ export async function generateMetadata(
   const collection = await getCollectionByHandle(handle);
   if (!collection) return {};
 
-  return {
+  return pageMetadata({
     title: collection.title,
-    description: collection.description,
-  };
+    description: collection.description || undefined,
+    path: `/collections/${handle}`,
+  });
 }
 
 export default async function CollectionPage(

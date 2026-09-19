@@ -1,9 +1,11 @@
-import type { Metadata } from "next";
 import { ProductListingPage } from "@/components/product-listing-page";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "New Arrivals",
-};
+  description: "Freshly selected beauty and fashion pieces for the season ahead.",
+  path: "/new-arrivals",
+});
 
 export default function NewArrivalsPage() {
   return (
