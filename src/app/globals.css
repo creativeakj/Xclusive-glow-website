@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: light;
   --background: #fbf7f1;
   --foreground: #2a1c18;
   --card: #ffffff;
@@ -13,6 +14,22 @@
   --border: #e7dacb;
   --footer: #1c120f;
   --footer-foreground: #efe4d8;
+}
+
+.dark {
+  color-scheme: dark;
+  --background: #120b09;
+  --foreground: #f3e9dd;
+  --card: #1c1210;
+  --primary: #c6a15b;
+  --primary-foreground: #1c1210;
+  --accent: #9c3a4f;
+  --accent-foreground: #f8f0e4;
+  --muted: #1c1310;
+  --muted-foreground: #b3a291;
+  --border: #362923;
+  --footer: #0a0605;
+  --footer-foreground: #cbb89a;
 }
 
 @theme inline {
@@ -35,6 +52,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 @utility eyebrow {
@@ -71,24 +89,4 @@ body {
 
 @utility animate-accordion-up {
   animation: accordion-up 0.2s ease-out;
-}
-
-@utility xg-mark {
-  position: relative;
-  display: grid;
-  width: 2.25rem;
-  height: 2.25rem;
-  place-items: center;
-  border: 1px solid var(--color-accent);
-  color: var(--color-accent);
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-  & span:first-child {
-    transform: translate(-0.16rem, -0.04rem);
-  }
-  & span:last-child {
-    position: absolute;
-    transform: translate(0.18rem, 0.16rem);
-    font-size: 0.9rem;
-  }
 }

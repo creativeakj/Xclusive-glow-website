@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Price } from "./price";
 import { QuickAddButton } from "./quick-add-button";
 import { QuickViewDialog } from "./quick-view-dialog";
+import { WishlistButton } from "./wishlist-button";
 import type { ProductListItem } from "@/lib/shopify/types";
 
 export function ProductCard({
@@ -30,6 +31,15 @@ export function ProductCard({
             </div>
           )}
         </Link>
+        <WishlistButton
+          item={{
+            id: product.id,
+            handle: product.handle,
+            title: product.title,
+            image: product.featuredImage?.url ?? null,
+            price: product.priceRange.minVariantPrice,
+          }}
+        />
         {showQuickView ? (
           <QuickViewDialog handle={product.handle} title={product.title} />
         ) : null}

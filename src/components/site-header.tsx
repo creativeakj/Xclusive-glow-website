@@ -1,9 +1,11 @@
 import Link from "next/link";
-import { ShoppingBag, User } from "lucide-react";
+import { Heart, ShoppingBag, User } from "lucide-react";
 import { getCurrentCart } from "@/lib/shopify/cart-query";
 import { MobileNav } from "./mobile-nav";
 import { SearchForm } from "./search-form";
 import { Logo } from "./logo";
+import { ThemeToggle } from "./theme-toggle";
+import { WishlistCountBadge } from "./wishlist-count-badge";
 import { NAV_LINKS } from "@/lib/nav-links";
 
 export async function SiteHeader() {
@@ -22,15 +24,18 @@ export async function SiteHeader() {
         <SearchForm className="hidden max-w-xl flex-1 lg:flex" />
 
         <div className="flex items-center gap-4">
-          <Link
-            href="/account"
-            aria-label="My account"
-            className="hidden items-center gap-1.5 text-sm text-foreground hover:text-primary sm:flex"
-          >
-            <User className="size-4" />
-            Account
+          <Link href="/account" aria-label="My account" className="text-foreground hover:text-primary">
+            <User className="size-5" />
           </Link>
-          <Link href="/cart" aria-label={`Cart with ${itemCount} items`} className="relative">
+          <Link
+            href="/wishlist"
+            aria-label="Wishlist"
+            className="relative text-foreground hover:text-primary"
+          >
+            <Heart className="size-5" />
+            <WishlistCountBadge />
+          </Link>
+          <Link href="/cart" aria-label={`Cart with ${itemCount} items`} className="relative text-foreground hover:text-primary">
             <ShoppingBag className="size-5" />
             {itemCount > 0 ? (
               <span className="absolute -right-2 -top-2 grid size-4 place-items-center rounded-full bg-primary text-[9px] text-primary-foreground">
@@ -38,6 +43,9 @@ export async function SiteHeader() {
               </span>
             ) : null}
           </Link>
+          <div className="hidden lg:block">
+            <ThemeToggle />
+          </div>
           <MobileNav />
         </div>
       </div>

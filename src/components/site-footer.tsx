@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaTiktok } from "react-icons/fa6";
 import { FaCcMastercard, FaCcVisa } from "react-icons/fa6";
@@ -16,10 +17,13 @@ export function SiteFooter() {
     <footer className="bg-footer text-footer-foreground">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
         <div>
-          <span className="xg-mark" aria-hidden="true">
-            <span>X</span>
-            <span>G</span>
-          </span>
+          <Image
+            src="/logo/xclusive-glow-icon.png"
+            alt="Xclusive Glow"
+            width={120}
+            height={54}
+            className="h-10 w-auto"
+          />
           <p className="mt-5 max-w-xs text-sm leading-6 text-footer-foreground/70">
             Luxury beauty, fashion and lifestyle, thoughtfully selected for every glow.
           </p>

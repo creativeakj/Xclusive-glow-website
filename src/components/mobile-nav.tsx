@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { NAV_LINKS } from "@/lib/nav-links";
 import { Logo } from "./logo";
+import { ThemeToggle } from "./theme-toggle";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -40,6 +41,10 @@ export function MobileNav() {
               </Link>
             ))}
           </nav>
+          <div className="mt-auto flex items-center justify-between border-t border-border pt-4">
+            <span className="text-sm text-muted-foreground">Dark mode</span>
+            <ThemeToggle />
+          </div>
         </div>
       ) : null}
     </div>
