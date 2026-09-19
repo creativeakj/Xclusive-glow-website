@@ -5,6 +5,7 @@ import { MobileNav } from "./mobile-nav";
 import { SearchForm } from "./search-form";
 import { Logo } from "./logo";
 import { ThemeToggle } from "./theme-toggle";
+import { PromoBar } from "./promo-bar";
 import { WishlistCountBadge } from "./wishlist-count-badge";
 import { NAV_LINKS } from "@/lib/nav-links";
 
@@ -14,9 +15,7 @@ export async function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background">
-      <div className="hidden bg-primary py-2 text-center text-[10px] uppercase tracking-[0.16em] text-primary-foreground sm:block">
-        Complimentary shipping on orders over $75 &middot; 10% off your first order &mdash; WELCOME10
-      </div>
+      <PromoBar />
 
       <div className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-5 px-4 lg:px-8">
         <Logo />
