@@ -27,9 +27,6 @@ export default async function ProfilePage() {
           <dd className="text-foreground">{profile?.phoneNumber || "—"}</dd>
         </div>
       </dl>
-      <p className="mt-4 text-xs text-muted-foreground">
-        Profile details are managed through your Shopify customer account.
-      </p>
     </div>
   );
 }
