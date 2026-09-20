@@ -8,6 +8,10 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { WishlistProvider } from "@/components/wishlist-provider";
 import { shopifyConfig } from "@/lib/shopify/env";
 import { defaultDescription, siteName } from "@/lib/seo";
+import {
+  GoogleTagManagerNoScript,
+  GoogleTagManagerScript,
+} from "@/components/google-tag-manager";
 
 const displayFont = Instrument_Serif({
   variable: "--font-display",
@@ -61,6 +65,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${displayFont.variable} ${bodyFont.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
+        <GoogleTagManagerScript />
+        <GoogleTagManagerNoScript />
         <ThemeProvider>
           <WishlistProvider>
             <SiteHeader />

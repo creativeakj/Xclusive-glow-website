@@ -2,8 +2,12 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProductDetail } from "@/components/product-detail";
+import { ProductGrid } from "@/components/product-grid";
 import { ShopifyNotConfigured } from "@/components/shopify-not-configured";
-import { getProductByHandle } from "@/lib/shopify/products";
+import {
+  getProductByHandle,
+  getProductRecommendations,
+} from "@/lib/shopify/products";
 import { isStorefrontConfigured } from "@/lib/shopify/env";
 import { pageMetadata } from "@/lib/seo";
 
@@ -37,6 +41,8 @@ export default async function ProductPage(
   const product = await getProductByHandle(handle);
 
   if (!product) notFound();
+
+  const recommendations = await getProductRecommendations(product.id);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
@@ -76,6 +82,13 @@ export default async function ProductPage(
 
         <ProductDetail product={product} />
       </div>
+
+      {recommendations.length > 0 ? (
+        <div className="mt-20">
+          <h2 className="mb-8 font-serif text-2xl text-foreground">You may also like</h2>
+          <ProductGrid products={recommendations} />
+        </div>
+      ) : null}
     </div>
   );
 }

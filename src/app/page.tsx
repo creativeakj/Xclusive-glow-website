@@ -34,11 +34,11 @@ export default async function HomePage() {
         <div>
           <p className="eyebrow">New season. New glow.</p>
           <h1 className="mt-5 max-w-xl font-serif text-5xl leading-[0.98] sm:text-6xl lg:text-[64px]">
-            Beauty, Fashion &amp; Style for Every You
+            Luxury Beauty &amp; Fashion, Curated for You
           </h1>
           <p className="mt-6 max-w-md text-muted-foreground">
-            Discover carefully selected beauty, fashion and lifestyle essentials for you and
-            your family.
+            Hand-picked beauty, fashion and lifestyle essentials for you and your family —
+            quality you can feel from the first order.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
@@ -54,6 +54,9 @@ export default async function HomePage() {
               Shop Fashion
             </Link>
           </div>
+          <p className="mt-5 text-xs uppercase tracking-[0.14em] text-muted-foreground">
+            10% off your first order &middot; Free shipping on orders over $75
+          </p>
         </div>
         <div className="relative aspect-[4/5] w-full overflow-hidden">
           <Image
@@ -107,10 +110,10 @@ export default async function HomePage() {
       {/* Trust badges */}
       <section className="mx-auto grid max-w-6xl grid-cols-1 divide-y divide-border px-4 py-8 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4 lg:px-8">
         {[
-          { icon: Sparkles, title: "Curated Quality", caption: "Carefully selected with you in mind" },
-          { icon: ShieldCheck, title: "Secure Payments", caption: "Safe and protected checkout" },
-          { icon: Truck, title: "Reliable Delivery", caption: "Convenient delivery to your doorstep" },
-          { icon: Headphones, title: "Customer Support", caption: "Here when you need us" },
+          { icon: Sparkles, title: "Curated Quality", caption: "Every piece hand-selected, never mass-dumped" },
+          { icon: ShieldCheck, title: "Secure Payments", caption: "Protected checkout, every order" },
+          { icon: Truck, title: "Free Shipping", caption: "On all orders over $75" },
+          { icon: Headphones, title: "Client Care", caption: "Real answers from our support team" },
         ].map(({ icon: Icon, title, caption }) => (
           <div key={title} className="flex items-center gap-4 px-4 py-5">
             <Icon className="size-6 text-primary" />

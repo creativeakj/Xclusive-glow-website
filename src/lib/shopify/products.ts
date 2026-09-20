@@ -145,3 +145,32 @@ export async function getCollections(
 
   return data.collections.nodes;
 }
+
+const GET_PRODUCT_RECOMMENDATIONS_QUERY = /* GraphQL */ `
+  query GetProductRecommendations(
+    $productId: ID!
+    $intent: ProductRecommendationIntent
+  ) {
+    productRecommendations(productId: $productId, intent: $intent) {
+      ...ProductListItemFields
+    }
+  }
+  ${PRODUCT_LIST_ITEM_FRAGMENT}
+`;
+
+// Shopify's own recommendation model (no extra infra needed) — RELATED
+// favors similar products, COMPLEMENTARY favors "goes with this".
+export async function getProductRecommendations(
+  productId: string,
+  intent: "RELATED" | "COMPLEMENTARY" = "RELATED"
+): Promise<ProductListItem[]> {
+  const data = await storefrontFetch<{
+    productRecommendations: RawProductListItem[] | null;
+  }>(
+    GET_PRODUCT_RECOMMENDATIONS_QUERY,
+    { productId, intent },
+    { tags: [`product-recommendations-${productId}`] }
+  );
+
+  return (data.productRecommendations ?? []).map(normalizeProductListItem);
+}

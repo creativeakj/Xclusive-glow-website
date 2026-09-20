@@ -15,7 +15,10 @@ export function Newsletter() {
   return (
     <section className="border-t border-border bg-muted px-4 py-16 text-center">
       <p className="eyebrow">Stay in the glow</p>
-      <h2 className="mt-3 font-serif text-3xl sm:text-4xl">Join the Xclusive Glow list</h2>
+      <h2 className="mt-3 font-serif text-3xl sm:text-4xl">Get 10% off your first order</h2>
+      <p className="mx-auto mt-3 max-w-md text-sm text-muted-foreground">
+        Join the list for early access to new arrivals, offers and restocks.
+      </p>
       <form onSubmit={submit} className="mx-auto mt-8 flex max-w-lg border-b border-border">
         <input
           required
