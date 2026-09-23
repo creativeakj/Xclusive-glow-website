@@ -4,12 +4,12 @@ import { FaFacebookF, FaInstagram, FaTiktok } from "react-icons/fa6";
 import { FaCcMastercard, FaCcVisa } from "react-icons/fa6";
 import { DEPARTMENT_LINKS } from "@/lib/nav-links";
 
-// No real social profile URLs yet (see README's outstanding client
-// decisions) — these render as plain icons rather than dead "#" links.
+// TikTok has no real profile URL yet — renders as a plain icon rather than
+// a dead "#" link until one is available.
 const SOCIAL_ICONS = [
-  { label: "Instagram", Icon: FaInstagram },
-  { label: "Facebook", Icon: FaFacebookF },
-  { label: "TikTok", Icon: FaTiktok },
+  { label: "Instagram", Icon: FaInstagram, href: "https://www.instagram.com/helenaudu007/" },
+  { label: "Facebook", Icon: FaFacebookF, href: "https://web.facebook.com/profile.php?id=61594864041537" },
+  { label: "TikTok", Icon: FaTiktok, href: null },
 ];
 
 export function SiteFooter() {
@@ -58,15 +58,28 @@ export function SiteFooter() {
         <div>
           <p className="eyebrow mb-4">Follow us</p>
           <div className="flex gap-3">
-            {SOCIAL_ICONS.map(({ label, Icon }) => (
-              <span
-                key={label}
-                aria-label={label}
-                className="grid size-9 place-items-center border border-footer-foreground/20 text-footer-foreground/70"
-              >
-                <Icon className="size-4" aria-hidden="true" />
-              </span>
-            ))}
+            {SOCIAL_ICONS.map(({ label, Icon, href }) =>
+              href ? (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="grid size-9 place-items-center border border-footer-foreground/20 text-footer-foreground/70 transition hover:border-primary hover:text-primary"
+                >
+                  <Icon className="size-4" aria-hidden="true" />
+                </a>
+              ) : (
+                <span
+                  key={label}
+                  aria-label={label}
+                  className="grid size-9 place-items-center border border-footer-foreground/20 text-footer-foreground/70"
+                >
+                  <Icon className="size-4" aria-hidden="true" />
+                </span>
+              )
+            )}
           </div>
           <p className="mt-6 mb-2 text-xs text-footer-foreground/50">Secure checkout</p>
           <div className="flex items-center gap-2 text-2xl text-footer-foreground/70">
