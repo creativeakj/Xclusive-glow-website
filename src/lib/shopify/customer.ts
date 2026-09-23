@@ -182,6 +182,8 @@ export async function getCustomerOrders(first = 20): Promise<OrderListItem[]> {
 }
 
 export type OrderLineItem = {
+  /** Product name, falling back to the line item's own title for custom
+   *  (non-product) line items — see normalization for why both are fetched. */
   title: string;
   quantity: number;
   variantTitle: string | null;
@@ -226,7 +228,11 @@ type RawOrder = {
   totalTax: Money | null;
   lineItems: {
     nodes: {
+      // `title` only applies to custom (non-product) line items per Shopify's
+      // schema docs — `name` is "the name of the product" and is what real
+      // orders actually populate. Fetch both, prefer `name`.
       title: string;
+      name: string | null;
       quantity: number;
       variantTitle: string | null;
       price: Money;
@@ -267,6 +273,7 @@ const GET_ORDER_QUERY = /* GraphQL */ `
       lineItems(first: 50) {
         nodes {
           title
+          name
           quantity
           variantTitle
           price {
@@ -311,7 +318,7 @@ export async function getCustomerOrder(id: string): Promise<OrderDetail | null> 
     totalShipping: order.totalShipping ?? null,
     totalTax: order.totalTax ?? null,
     lineItems: order.lineItems.nodes.map((item) => ({
-      title: item.title,
+      title: item.name || item.title,
       quantity: item.quantity,
       variantTitle: item.variantTitle ?? null,
       price: item.price,
